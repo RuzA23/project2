@@ -5,15 +5,21 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import { DataTable } from "@/components/ui/data-table";
 
-export const BillboardClient = () => {
+import { BillboardColumn, columns } from "./colums";
+
+interface BillboardCleintProps {
+  data: BillboardColumn[];
+}
+export const BillboardClient: React.FC<BillboardCleintProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
   return (
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title="Billboards (0)"
+          title={`Billboards (${data.length})`}
           description="Manage billboards for your store"
         />
         <Button
@@ -24,6 +30,7 @@ export const BillboardClient = () => {
         </Button>
       </div>
       <Separator />
+      <DataTable columns={columns} data={data} />
     </>
   );
 };
