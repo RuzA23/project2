@@ -3,14 +3,6 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
 
 export default clerkMiddleware((auth, request) => {
-  const { method } = request;
-
-  // Exclude GET requests from requiring authentication
-  // Optionally add more checks for other request methods
-  if (method === "GET") {
-    return;
-  }
-
   if (!isPublicRoute(request)) {
     auth().protect();
   }
