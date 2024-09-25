@@ -21,9 +21,14 @@ export function MainNav({
       active: patname === `/${params.storeId}/billboards`,
     },
     {
-      href: `/${params.storeId}/catogories`,
+      href: `/${params.storeId}/categories`,
       label: "Categories",
       active: patname === `/${params.storeId}/categories`,
+    },
+    {
+      href: `/${params.storeId}/sizes`,
+      label: "Sizes",
+      active: patname === `/${params.storeId}/sizes`,
     },
     {
       href: `/${params.storeId}/settings`,
