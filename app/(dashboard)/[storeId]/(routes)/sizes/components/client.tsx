@@ -1,6 +1,8 @@
 "use client";
+
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
@@ -13,9 +15,16 @@ import { SizeColumn, columns } from "./colums";
 interface SizesCleintProps {
   data: SizeColumn[];
 }
+
 export const SizesClient: React.FC<SizesCleintProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -29,7 +38,16 @@ export const SizesClient: React.FC<SizesCleintProps> = ({ data }) => {
         </Button>
       </div>
       <Separator />
-      <DataTable searchKey="name" columns={columns} data={data} />
+      <div className="my-4">
+        <input
+          type="text"
+          placeholder="Search sizes..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="max-w-sm p-2 border rounded"
+        />
+      </div>
+      <DataTable searchKey="name" columns={columns} data={filteredData} />
       <Heading title="API" description="API calls for Sizes" />
       <Separator />
       <ApiList entityName="sizes" entityIdName="sizeId" />
