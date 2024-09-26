@@ -10,10 +10,10 @@ import { ApiList } from "@/components/ui/api-list";
 
 import { BillboardColumn, columns } from "./colums";
 
-interface BillboardCleintProps {
+interface BillboardClientProps {
   data: BillboardColumn[];
 }
-export const BillboardClient: React.FC<BillboardCleintProps> = ({ data }) => {
+export const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
   return (
