@@ -8,6 +8,8 @@ export const revalidate = 0;
 
 const Navbar = async () => {
   const categories = await getCategories();
+    console.log("Fetched categories:", categories);
+
   return (
     <div className="border-b">
       <Container>

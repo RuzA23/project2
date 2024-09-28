@@ -11,6 +11,8 @@ interface MainNavProps {
 }
 
 const MainNav: React.FC<MainNavProps> = ({ data }) => {
+  console.log("MainNav received data:", data);
+
   const pathname = usePathname();
 
   const routes = data.map((route) => ({
