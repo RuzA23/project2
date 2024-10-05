@@ -6,7 +6,6 @@ export default clerkMiddleware((auth, request) => {
   const { method } = request;
 
   // Exclude GET requests from requiring authentication
-  // Optionally add more checks for other request methods
   if (method === "GET") {
     return;
   }
